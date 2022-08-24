@@ -1,0 +1,23 @@
+body{
+    margin-top:20px;
+    background:#eee;
+}
+
+.card-header{
+    text-align: center; 
+}
+.table-bordered > :not(caption) > * > * {
+    border-width: 4px 4px;
+}
+.ui-w-40{
+    width: 300px !important;
+    height: 300px;
+}
+
+.pname{
+    margin-left: 20px;
+    font-size: 30px;
+}
+.float-right{
+    float: right;
+}

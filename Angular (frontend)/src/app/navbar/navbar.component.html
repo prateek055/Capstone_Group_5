@@ -1,0 +1,56 @@
+<!-- Navigation-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <div class="container px-4 px-lg-5">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item"><a class="nav-link active" routerLink="">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" routerLink="products">Products</a></li>
+        <li class="nav-item"><a class="nav-link active" routerLink="/admin" *ngIf="admin">Admin Controls</a></li>
+        
+        <li><a href="#newarrival" class="nav-item nav-link active">New Items</a></li>
+        <li><a href="#todaysdeals" class="nav-item nav-link active">Today's Deals</a></li>
+        <li><a href="#topoffers" class="nav-item nav-link active">Top offers</a></li>
+        <!-- <li class="nav-item"><a class="nav-link" routerLink="footer">Contact Us</a></li> -->
+      </ul>
+
+    </div>
+
+
+
+
+    <form class="d-flex" role="search" *ngIf="search">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    </form>
+
+
+    <!-- login/logout  -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a *ngIf="!loggedin" routerLink="login" class="nav-link active" aria-current="page">LogIn</a>
+        </li>
+
+        <li class="nav-item">
+          <a *ngIf="loggedin" routerLink="viewwishlist" class="nav-link active" aria-current="page">Wishlist</a>
+        </li>
+        
+        <li class="nav-item">
+          <a *ngIf="loggedin" class="nav-link active" routerLink="/track">Order</a>
+        </li>
+        
+        <li class="nav-item">
+          <a *ngIf="loggedin" routerLink="viewcart" class="nav-link active" aria-current="page">My Cart</a>
+        </li>
+
+        <li class="nav-item">
+          <a *ngIf="loggedin" (click)="LogOut()" class="nav-link active" aria-current="page">LogOut</a>
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>

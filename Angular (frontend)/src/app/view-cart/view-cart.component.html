@@ -1,0 +1,160 @@
+<div class="container px-3 my-5 clearfix">
+  <!-- Aler after product deleted -->
+  <div style="height: 60px">
+    <div
+      *ngIf="deleted"
+      class="container alert alert-warning alert-dismissible fade show"
+      role="alert"
+    >
+      <strong>{{ message }}</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+  <!-- Shopping cart table -->
+  <div class="card">
+    <div class="card-header">
+      <h2>Shopping Cart</h2>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-bordered m-0">
+          <thead>
+            <tr>
+              <!-- Set columns width -->
+              <th class="text-center py-3 px-4" style="min-width: 400px">
+                Product Name &amp; Details
+              </th>
+
+              <th class="text-right py-3 px-4" style="width: 100px">
+                Item Price
+              </th>
+              <th class="text-center py-3 px-4" style="width: 120px">
+                Quantity
+              </th>
+              <th class="text-right py-3 px-4" style="width: 100px">
+                Discount
+              </th>
+              <th class="text-right py-3 px-4" style="width: 100px">Delete</th>
+
+              
+                <a
+                  href="#"
+                  class="shop-tooltip float-none text-light"
+                  title=""
+                  data-original-title="Clear cart"
+                  ><i class="ino ion-md-trash"></i
+                ></a>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cart of Carts">
+              <td class="p-4">
+                <div class="media align-items-center d-flex">
+                  <img
+                    src="{{ cart.img_url }}"
+                    class="d-block ui-w-40 ui-bordered mr-4"
+                    alt=""
+                  />
+                  <div class="media-body px-4">
+                    <a href="#" class="d-block text-dark"
+                      ><strong>{{ cart.item_name }}</strong></a
+                    >
+                  </div>
+                </div>
+              </td>
+              <td class="text-right font-weight-semibold align-middle p-4">
+                {{ cart.product_price }}
+              </td>
+
+              <td class="text-right font-weight-semibold align-middle px-4">
+                <div class="col">
+                  <input
+                    id="updateItem"
+                    type="text"
+                    class="form-control text-center"
+                    value="{{ cart.quantity }}"
+                    readonly="readonly"
+                  />
+                </div>
+                <div class="btn-group">
+                  <button
+                    (click)="decreaseItem(cart.id, cart, cart.quantity)"
+                    type="button"
+                    class="btn btn-primary btn-sm mx-2"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+
+                  <button
+                    (click)="
+                      increaseItem(
+                        cart.id,
+                        cart,
+                        cart.quantity,
+                        cart.product_price,
+                        cart.totDiscount
+                      )
+                    "
+                    type="button"
+                    class="btn btn-primary btn-sm float-right mx-2"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </td>
+              <td class="text-right font-weight-semibold align-middle p-4">
+                {{ cart.totDiscount }}
+              </td>
+              <td class="text-center align-middle px-0">
+                <button
+                  class="btb btn-primary btn-sm"
+                  type="button"
+                  (click)="DeleteItem(cart.id)"
+                >
+                  <i class="fas fa-multiply"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- / Shopping cart table -->
+
+      <div
+        class="d-flex flex-wrap justify-content-between align-items-center pb-4"
+      >
+        <div class="d-flex">
+          <div class="text-right mt-4">
+            <label class="text-muted font-weight-normal m-0">Total price</label>
+            <div class="text-large">
+              <strong>₹{{ TotalPrice }}</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="float-right">
+        <button
+          type="button"
+          routerLink=""
+          class="btn btn-lg btn-default md-btn-flat mt-2 mr-3"
+        >
+          Back to shopping
+        </button>
+        <button
+          (click)="CheckOut()"
+          type="button"
+          class="btn btn-lg btn-primary"
+        >
+          Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
